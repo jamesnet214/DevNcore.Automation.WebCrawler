@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32505.426
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevNcore.Automation.WebCrawler", "DevNcore.Automation.WebCrawler\DevNcore.Automation.WebCrawler.csproj", "{78FF86CA-A9AC-4AA1-9B50-B9D468FC4F1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{9C65FB01-F201-44CD-AEC5-6915EFB1E0AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{78FF86CA-A9AC-4AA1-9B50-B9D468FC4F1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78FF86CA-A9AC-4AA1-9B50-B9D468FC4F1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78FF86CA-A9AC-4AA1-9B50-B9D468FC4F1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78FF86CA-A9AC-4AA1-9B50-B9D468FC4F1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C65FB01-F201-44CD-AEC5-6915EFB1E0AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C65FB01-F201-44CD-AEC5-6915EFB1E0AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C65FB01-F201-44CD-AEC5-6915EFB1E0AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C65FB01-F201-44CD-AEC5-6915EFB1E0AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2DE6221B-EFB6-4C5B-97FD-138B7AD0AE24}
+	EndGlobalSection
+EndGlobal
