@@ -1,6 +1,6 @@
 # DevNcore.Automation.WebCrawler
 웹자동화에 필요한 기능들을 조금 더 편하게 쓸수 있도록<br>
-정리 해놓은 라이브러리 입니다.
+정리 및 추가 해놓은 라이브러리 입니다.<br>
 완성된 후 Nuget Pacakge에 등록할 예정입니다.
 
 ## 구현된 기능
