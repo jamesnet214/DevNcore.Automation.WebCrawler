@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DevNcore.Automation.WebCrawler
 {
-    public class Chrome
+    public partial class Chrome
     {
         private ChromeDriver driver { get; set; }
         private ChromeDriverManager manager = new ChromeDriverManager();
