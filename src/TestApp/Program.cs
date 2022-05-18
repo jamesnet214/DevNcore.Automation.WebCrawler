@@ -9,8 +9,7 @@ namespace TestApp
         {
             Console.WriteLine("ChromeDriver Start");
 
-            var cm = new Chrome();
-            cm.Start();
+            var cm = new Chrome();            
 
             cm.Url("https://www.google.com");
 

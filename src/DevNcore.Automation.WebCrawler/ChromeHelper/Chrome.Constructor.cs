@@ -1,4 +1,4 @@
-﻿using DevNcore.Automation.WebCrawler.Models;
+﻿using DevNcore.Automation.WebCrawler.ChromeHelper;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace DevNcore.Automation.WebCrawler.ChromeHelper
+namespace DevNcore.Automation.WebCrawler
 {
     public partial class Chrome
     {
@@ -46,6 +46,17 @@ namespace DevNcore.Automation.WebCrawler.ChromeHelper
             if (setting == null)
                 setting = new ChromeDriverSetting();
 
+            // 크롬드라이버 최신버전 확인 및 다운로드
+            if (setting.updateLatestVersion)
+            {
+                string folder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                string driverPath = $"{folder}\\chromedriver.exe";
+                if (manager.SetUp(driverPath) == false)
+                {
+                    throw new FileNotFoundException("chromedriver.exe를 업데이트 하지 못했습니다.");
+                }
+            }
+
             // 언어 설정
             if (!string.IsNullOrEmpty(setting.lang))
                 options.AddArgument($"--lang={setting.lang}");
@@ -74,16 +85,7 @@ namespace DevNcore.Automation.WebCrawler.ChromeHelper
             var chromeDriverService = ChromeDriverService.CreateDefaultService();
             chromeDriverService.HideCommandPromptWindow = setting.hideCommandPromptWindow;
 
-            // 크롬드라이버 최신버전 확인 및 다운로드
-            if (setting.updateLatestVersion)
-            {                
-                string folder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                string driverPath = $"{folder}\\chromedriver.exe";
-                if (manager.SetUp(driverPath) == false)
-                {
-                    throw new FileNotFoundException("chromedriver.exe를 업데이트 하지 못했습니다.");
-                }
-            }
+           
 
             // 크롬 드라이버 생성
             driver = new ChromeDriver(chromeDriverService, options, TimeSpan.FromSeconds(setting.commandTimeoutDelay));

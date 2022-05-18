@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace DevNcore.Automation.WebCrawler.ChromeHelper
+namespace DevNcore.Automation.WebCrawler
 {
     public partial class Chrome
     {
@@ -496,6 +496,476 @@ namespace DevNcore.Automation.WebCrawler.ChromeHelper
         #endregion
 
 
+
+
+
+
+
+
+        #region IframeAction
+        public bool FrameClickList(string xpath)
+        {
+            bool result = false;
+            try
+            {
+                driver.SwitchTo().DefaultContent();
+                try
+                {
+                    var els = driver.FindElements(By.XPath(xpath));
+                    if (els != null && els.Count > 0)
+                    {
+                        foreach (var el in els)
+                        {
+                            try
+                            {
+                                Click(el, 100);
+                                result = true;
+                                if (IsPopup())
+                                {
+                                    return result;
+                                }
+                            }
+                            catch { }
+                        }
+                    }
+                }
+                catch { }
+
+
+                var iframes = GetElementList("//iframe");
+                if (iframes != null && iframes.Count > 0)
+                {
+                    foreach (var row in iframes)
+                    {
+                        driver.SwitchTo().DefaultContent();
+                        driver.SwitchTo().Frame(row);
+                        try
+                        {
+                            var els = driver.FindElements(By.XPath(xpath));
+                            if (els != null && els.Count > 0)
+                            {
+                                foreach (var el in els)
+                                {
+                                    try
+                                    {
+                                        Click(el, 100);
+                                        result = true;
+                                        if (IsPopup())
+                                        {
+                                            return result;
+                                        }
+                                    }
+                                    catch { }
+                                }
+                            }
+                        }
+                        catch { }
+
+
+                        var iframes2 = GetElementList("//iframe");
+                        if (iframes2 == null || iframes2.Count == 0)
+                            continue;
+
+                        foreach (var row2 in iframes2)
+                        {
+                            driver.SwitchTo().Frame(row2);
+                            try
+                            {
+                                var els = driver.FindElements(By.XPath(xpath));
+                                if (els != null && els.Count > 0)
+                                {
+                                    foreach (var el in els)
+                                    {
+                                        try
+                                        {
+                                            Click(el, 100);
+                                            result = true;
+                                            if (IsPopup())
+                                            {
+                                                return result;
+                                            }
+                                        }
+                                        catch { }
+                                    }
+                                }
+                            }
+                            catch { }
+                        }
+
+                        driver.SwitchTo().DefaultContent();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"[{MethodBase.GetCurrentMethod().Name}] 예외발생 => {ex.Message}");
+            }
+
+            driver.SwitchTo().DefaultContent();
+
+            return result;
+        }
+
+
+
+
+        public bool FrameInput(string xpath, string 텍스트)
+        {
+            bool result = false;
+            try
+            {
+                driver.SwitchTo().DefaultContent();
+                try
+                {
+                    var el = driver.FindElement(By.XPath(xpath));
+                    if (el != null)
+                    {
+                        try
+                        {
+                            el.Clear();
+                            el.SendKeys(텍스트);
+                            result = true;
+                            if (IsPopup())
+                            {
+                                return result;
+                            }
+                        }
+                        catch { }
+                    }
+                }
+                catch { }
+
+
+                var iframes = GetElementList("//iframe");
+                if (iframes != null && iframes.Count > 0)
+                {
+                    foreach (var row in iframes)
+                    {
+                        driver.SwitchTo().DefaultContent();
+                        driver.SwitchTo().Frame(row);
+                        try
+                        {
+                            var el = driver.FindElement(By.XPath(xpath));
+                            if (el != null)
+                            {
+                                try
+                                {
+                                    el.Clear();
+                                    el.SendKeys(텍스트);
+                                    result = true;
+                                    if (IsPopup())
+                                    {
+                                        return result;
+                                    }
+                                }
+                                catch { }
+                            }
+                        }
+                        catch { }
+
+
+                        var iframes2 = GetElementList("//iframe");
+                        if (iframes2 == null || iframes2.Count == 0)
+                            continue;
+
+                        foreach (var row2 in iframes2)
+                        {
+                            driver.SwitchTo().Frame(row2);
+                            try
+                            {
+                                var el = driver.FindElement(By.XPath(xpath));
+                                if (el != null)
+                                {
+                                    try
+                                    {
+                                        el.Clear();
+                                        el.SendKeys(텍스트);
+                                        result = true;
+                                        if (IsPopup())
+                                        {
+                                            return result;
+                                        }
+                                    }
+                                    catch { }
+                                }
+                            }
+                            catch { }
+                        }
+
+                        driver.SwitchTo().DefaultContent();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"[{MethodBase.GetCurrentMethod().Name}] 예외발생 => {ex.Message}");
+            }
+
+            driver.SwitchTo().DefaultContent();
+            return result;
+        }
+
+
+
+
+
+        public bool FrameInputList(string xpath, string 텍스트)
+        {
+            bool result = false;
+            try
+            {
+                driver.SwitchTo().DefaultContent();
+                try
+                {
+                    var els = driver.FindElements(By.XPath(xpath));
+                    if (els != null && els.Count > 0)
+                    {
+                        foreach (var el in els)
+                        {
+                            try
+                            {
+                                el.Clear();
+                                el.SendKeys(텍스트);
+                                result = true;
+                                if (IsPopup())
+                                {
+                                    return result;
+                                }
+                            }
+                            catch { }
+                        }
+                    }
+                }
+                catch { }
+
+
+                var iframes = GetElementList("//iframe");
+                if (iframes != null && iframes.Count > 0)
+                {
+                    foreach (var row in iframes)
+                    {
+                        driver.SwitchTo().DefaultContent();
+                        driver.SwitchTo().Frame(row);
+                        try
+                        {
+                            var els = driver.FindElements(By.XPath(xpath));
+                            if (els != null && els.Count > 0)
+                            {
+                                foreach (var el in els)
+                                {
+                                    try
+                                    {
+                                        el.Clear();
+                                        el.SendKeys(텍스트);
+                                        result = true;
+                                        if (IsPopup())
+                                        {
+                                            return result;
+                                        }
+                                    }
+                                    catch { }
+                                }
+                            }
+                        }
+                        catch { }
+
+
+                        var iframes2 = GetElementList("//iframe");
+                        if (iframes2 == null || iframes2.Count == 0)
+                            continue;
+
+                        foreach (var row2 in iframes2)
+                        {
+                            driver.SwitchTo().Frame(row2);
+                            try
+                            {
+                                var els = driver.FindElements(By.XPath(xpath));
+                                if (els != null && els.Count > 0)
+                                {
+                                    foreach (var el in els)
+                                    {
+                                        try
+                                        {
+                                            el.Clear();
+                                            el.SendKeys(텍스트);
+                                            result = true;
+                                            if (IsPopup())
+                                            {
+                                                return result;
+                                            }
+                                        }
+                                        catch { }
+                                    }
+                                }
+                            }
+                            catch { }
+                        }
+
+                        driver.SwitchTo().DefaultContent();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"[{MethodBase.GetCurrentMethod().Name}] 예외발생 => {ex.Message}");
+            }
+
+            driver.SwitchTo().DefaultContent();
+            return result;
+        }
+
+
+
+
+
+
+
+
+        public bool FrameComboBox(string xpath)
+        {
+            bool result = false;
+            try
+            {
+                driver.SwitchTo().DefaultContent();
+                try
+                {
+                    var el = driver.FindElement(By.XPath(xpath));
+                    if (el != null)
+                    {
+                        // 선택할 노드의 Value값
+                        var value = el.GetAttribute("value");
+                        if (string.IsNullOrEmpty(value) == false)
+                        {
+                            // 선택할 노드의 부모 : 콤보박스 본체
+                            var parent = GetParentElement(el);
+                            if (parent != null)
+                            {
+                                SelectElement select = new SelectElement(parent);
+                                if (select != null)
+                                {
+                                    select.SelectByValue(value);
+                                    result = true;
+                                    if (IsPopup())
+                                    {
+                                        return result;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                catch { }
+
+
+                var iframes = GetElementList("//iframe");
+                if (iframes != null && iframes.Count > 0)
+                {
+                    foreach (var row in iframes)
+                    {
+                        driver.SwitchTo().DefaultContent();
+                        driver.SwitchTo().Frame(row);
+                        try
+                        {
+                            var el = driver.FindElement(By.XPath(xpath));
+                            if (el != null)
+                            {
+                                // 선택할 노드의 Value값
+                                var value = el.GetAttribute("value");
+                                if (string.IsNullOrEmpty(value) == false)
+                                {
+                                    // 선택할 노드의 부모 : 콤보박스 본체
+                                    var parent = GetParentElement(el);
+                                    if (parent != null)
+                                    {
+                                        SelectElement select = new SelectElement(parent);
+                                        if (select != null)
+                                        {
+                                            select.SelectByValue(value);
+                                            result = true;
+                                            if (IsPopup())
+                                            {
+                                                return result;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        catch { }
+
+
+                        var iframes2 = GetElementList("//iframe");
+                        if (iframes2 == null || iframes2.Count == 0)
+                            continue;
+
+                        foreach (var row2 in iframes2)
+                        {
+                            driver.SwitchTo().Frame(row2);
+                            try
+                            {
+                                var el = driver.FindElement(By.XPath(xpath));
+                                if (el != null)
+                                {
+                                    // 선택할 노드의 Value값
+                                    var value = el.GetAttribute("value");
+                                    if (string.IsNullOrEmpty(value) == false)
+                                    {
+                                        // 선택할 노드의 부모 : 콤보박스 본체
+                                        var parent = GetParentElement(el);
+                                        if (parent != null)
+                                        {
+                                            SelectElement select = new SelectElement(parent);
+                                            if (select != null)
+                                            {
+                                                select.SelectByValue(value);
+                                                result = true;
+                                                if (IsPopup())
+                                                {
+                                                    return result;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            catch { }
+                        }
+
+                        driver.SwitchTo().DefaultContent();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"[{MethodBase.GetCurrentMethod().Name}] 예외발생 => {ex.Message}");
+            }
+
+            driver.SwitchTo().DefaultContent();
+            return result;
+        }
+
+
+        bool IsPopup()
+        {
+            bool find = false;
+            try
+            {
+                var popup = driver.SwitchTo().Alert();
+                if (popup != null)
+                {
+                    find = true;
+                }
+            }
+            catch
+            {
+                //Debug.WriteLine($"[{MethodBase.GetCurrentMethod().Name}] 예외발생 => {ex.Message}");
+            }
+
+            return find;
+        }
+
+
+        #endregion
 
 
 

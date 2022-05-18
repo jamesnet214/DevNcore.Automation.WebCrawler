@@ -143,7 +143,7 @@ namespace DevNcore.Automation.WebCrawler
                 Directory.CreateDirectory(binaryDir);
             }
 
-            
+
             Exception renameException = null;
             try
             {
@@ -169,7 +169,7 @@ namespace DevNcore.Automation.WebCrawler
             // Delete unnecessary files when the operation is complete            
             try
             {
-                if (Directory.Exists(stagingDir)) 
+                if (Directory.Exists(stagingDir))
                     Directory.Delete(stagingDir, true);
             }
             catch (Exception ex)

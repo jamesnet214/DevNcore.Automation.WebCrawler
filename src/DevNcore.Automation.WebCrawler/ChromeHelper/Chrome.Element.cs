@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DevNcore.Automation.WebCrawler.ChromeHelper
+namespace DevNcore.Automation.WebCrawler
 {
     public partial class Chrome
     {
