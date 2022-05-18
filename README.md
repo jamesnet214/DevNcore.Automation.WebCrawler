@@ -3,8 +3,11 @@
 
 완성된 후 Nuget Pacakge에 등록할 예정입니다.
 
-## 구현된 기능
-  - [x] 크롬 드라이버를 항상 최신버전으로 유지하는 기능 (DriverManager.cs)
+## 개발 내역
+  - [x] ChromeDriverManager: 크롬 드라이버를 항상 최신버전으로 유지하는 기능
+  - [x] ChromeHeler: 윈도우, 클릭, 입력등 자동화 제어
+  - [ ] HtmlParser
+  - [ ] CefSharpHeler
 
 ## 개발 환경
 - .NET 6.0
