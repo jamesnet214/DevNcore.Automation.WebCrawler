@@ -1,4 +1,4 @@
-# DevNcore.Automation.WebCrawler
+# WebCrawler
 
 ![image](https://user-images.githubusercontent.com/52397976/169033575-816e86c4-c7b5-4fed-8bd8-79bed24daaed.png)
 
@@ -9,6 +9,9 @@
   - [x] ChromeHeler: 윈도우, 클릭, 입력등 자동화 제어
   - [ ] HtmlParser
   - [ ] CefSharpHeler
+
+## NugetPackages 1.0.0
+- DevNcore.Automation.WebCrawler
 
 ## 개발 환경
 - .NET 6.0
