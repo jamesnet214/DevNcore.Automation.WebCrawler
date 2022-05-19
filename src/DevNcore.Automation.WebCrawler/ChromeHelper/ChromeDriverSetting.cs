@@ -71,5 +71,11 @@ namespace DevNcore.Automation.WebCrawler
         /// 기본경로 => $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\\Google\\Chrome\\User Data";        
         /// </summary>
         public string? userDataDir { get; set; }
+
+
+        /// <summary>
+        /// media stream 사용
+        /// </summary>
+        public bool enableMediaStream { get; set; }
     }
 }

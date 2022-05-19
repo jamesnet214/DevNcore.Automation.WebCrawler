@@ -1,5 +1,4 @@
-﻿using DevNcore.Automation.WebCrawler.ChromeHelper;
-using OpenQA.Selenium.Chrome;
+﻿using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -61,6 +60,10 @@ namespace DevNcore.Automation.WebCrawler
             if (!string.IsNullOrEmpty(setting.lang))
                 options.AddArgument($"--lang={setting.lang}");
 
+            // 숨김모드
+            if(setting.headless)
+                options.AddArgument("--headless");
+
             // 자동화 문구 제거
             if (setting.disableAutoMessage)
                 options.AddExcludedArgument("enable-automation");
@@ -80,6 +83,10 @@ namespace DevNcore.Automation.WebCrawler
             // 크롬 프로필 경로 사용시 
             if (!string.IsNullOrEmpty(setting.userDataDir))
                 options.AddArgument($"user-data-dir={setting.userDataDir}");
+
+            // 스트림 사용시
+            if(setting.enableMediaStream)
+                options.AddArgument("use-fake-ui-for-media-stream");
 
             // 크롬 콘솔창 설정
             var chromeDriverService = ChromeDriverService.CreateDefaultService();

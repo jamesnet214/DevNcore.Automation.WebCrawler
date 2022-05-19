@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\mic.png" />
+    <None Remove="Resources\mic2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DevNcore.UI.Foundation" Version="1.0.9" />
+    <PackageReference Include="RoslynPad.Editor.Windows" Version="1.2.0" />
+    <PackageReference Include="RoslynPad.Roslyn" Version="3.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DevNcore.Automation.WebCrawler\DevNcore.Automation.WebCrawler.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\mic.png" />
+    <Resource Include="Resources\mic2.png" />
+  </ItemGroup>
+
+</Project>
