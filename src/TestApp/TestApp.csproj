@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DevNcore.Automation.Speech\DevNcore.Automation.Speech.csproj" />
     <ProjectReference Include="..\DevNcore.Automation.WebCrawler\DevNcore.Automation.WebCrawler.csproj" />
   </ItemGroup>
 

@@ -19,17 +19,23 @@
 
   <ItemGroup>
     <PackageReference Include="DevNcore.UI.Foundation" Version="1.0.9" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1210.39" />
     <PackageReference Include="RoslynPad.Editor.Windows" Version="1.2.0" />
     <PackageReference Include="RoslynPad.Roslyn" Version="3.6.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DevNcore.Automation.Speech\DevNcore.Automation.Speech.csproj" />
     <ProjectReference Include="..\DevNcore.Automation.WebCrawler\DevNcore.Automation.WebCrawler.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Resources\mic.png" />
     <Resource Include="Resources\mic2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>

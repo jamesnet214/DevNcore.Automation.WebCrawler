@@ -1,4 +1,5 @@
-﻿using DevNcore.Automation.WebCrawler;
+﻿using DevNcore.Automation.Speech;
+using DevNcore.Automation.WebCrawler;
 using System.Reflection;
 
 namespace TestApp
@@ -9,34 +10,16 @@ namespace TestApp
         {
             Console.WriteLine("ChromeDriver Start");
 
-            var cm = new Chrome();            
+            var s = new SpeechAPI();
 
             
 
-            Console.ReadLine();
-            cm.Exit();
+            Console.ReadLine();            
         }
+
+        
     }
 
-    public class Voice
-    {
-        Chrome cm { get; set; }
-
-        public Voice()
-        {
-            cm = new Chrome();
-            cm.Url("https://www.youtube.com");
-
-            string step = "";
-            
-        }
-
-
-        public void Test()
-        {
-
-        }
-    }
 
 
 
