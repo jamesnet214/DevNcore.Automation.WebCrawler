@@ -17,12 +17,8 @@ namespace DevNcore.Automation.WebCrawler
             {
                 if (driver == null)
                     return null;
-                
-                IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
-                if (js == null)
-                    return null;
 
-                return js.ExecuteScript(script);
+                return driver.ExecuteScript(script);
             }
             catch (Exception ex)
             {

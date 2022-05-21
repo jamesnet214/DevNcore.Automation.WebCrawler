@@ -11,41 +11,47 @@ namespace DevNcore.Automation.Speech
     {
         Browser browser { get; set; }
         Page page { get; set; }
+        string baseURL { get; set; } = "https://www.bing.com";
 
-        public SpeechAPI(bool ClearAllProcess = true)
+        public SpeechAPI(bool ClearAllChromium = true)
         {            
-            if(ClearAllProcess)
-                CloseAllProcess();
+            if(ClearAllChromium)
+                ClearAllProcess();
         }
-        
+
+
+        /// <summary>
+        /// 음성인식을 하기 위한 초기화 작업 진행
+        /// </summary>
+        /// <returns></returns>
         public async Task Initialize()
         {
+            // 크로미움 설치 확인
             var browserFetcher = new BrowserFetcher();
             await browserFetcher.DownloadAsync();
 
             browser = await Puppeteer.LaunchAsync(
                 new LaunchOptions {
+                    // 숨김모드
                     Headless = true, 
                     // 마이크 허용
-                    Args = new[] 
-                    { 
-                        "--use-fake-ui-for-media-stream",
-                    },
+                    Args = new[] {  "--use-fake-ui-for-media-stream", },
                     // headless 모드에서 음소거하지 않게
-                    IgnoredDefaultArgs = new[] {
-                        "--mute-audio",
-                    },
+                    IgnoredDefaultArgs = new[] { "--mute-audio" },
             });
 
             page = await browser.NewPageAsync();
-            await page.GoToAsync("https://www.bing.com");
+            await page.GoToAsync(baseURL);
         }
 
 
         public async Task<string> Run()
         {
+            string result = null;
+
             string oldTitle = "";
             string step = "";
+
             Stopwatch w = new Stopwatch();
             w.Start();
 
@@ -53,9 +59,9 @@ namespace DevNcore.Automation.Speech
             {
                 Thread.Sleep(100);
 
+                // 10초 대기 제한
                 if (w.Elapsed.TotalSeconds >= 10)
                 {
-                    await page.GoToAsync("https://www.bing.com");
                     break;
                 }
 
@@ -69,7 +75,7 @@ namespace DevNcore.Automation.Speech
                         var el = await page.XPathAsync("//*[@id='sb_form']/div[1]/div");
                         if(el != null)
                         {
-                            // 음성열기
+                            // 음성인식 열기
                             await el[0].ClickAsync();
                             step = "wait";
                         }
@@ -77,12 +83,13 @@ namespace DevNcore.Automation.Speech
                     else if (step == "wait")
                     {
                         string title = await page.EvaluateFunctionAsync<string>("()=> document.querySelector('head > title').text");
-                        title = title.ToString().Replace(" - 검색", "");
-                        // 닫기 버튼
+                        title = title.Replace(" - 검색", "");
+
+                        // 음성인식 완료시 루프종료
                         if (title != oldTitle)
-                        {
-                            await page.GoToAsync("https://www.bing.com");
-                            return title;
+                        {                            
+                            result = title;
+                            break;
                         }
                     }
                 }
@@ -91,7 +98,10 @@ namespace DevNcore.Automation.Speech
                 }
             }
 
-            return null;
+            // 초기화 페이지로 이동해둠
+            await page.GoToAsync(baseURL);
+
+            return result;
 
         }
 
@@ -107,7 +117,7 @@ namespace DevNcore.Automation.Speech
         /// <summary>
         /// 모든 크로니움 프로세스 닫기
         /// </summary>
-        private void CloseAllProcess()
+        private void ClearAllProcess()
         {
             try
             {                
