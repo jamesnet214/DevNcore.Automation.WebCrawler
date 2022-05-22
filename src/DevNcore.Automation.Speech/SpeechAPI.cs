@@ -150,20 +150,6 @@ namespace DevNcore.Automation.Speech
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         ~SpeechAPI()
         {
             if(page != null)
