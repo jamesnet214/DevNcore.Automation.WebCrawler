@@ -107,7 +107,6 @@ namespace DevNcore.Automation.Speech
 
         public async void Close()
         {
-            await page.CloseAsync();
             await browser.CloseAsync();
 
             page = null;
@@ -117,7 +116,7 @@ namespace DevNcore.Automation.Speech
         /// <summary>
         /// 모든 크로니움 프로세스 닫기
         /// </summary>
-        private void ClearAllProcess()
+        public void ClearAllProcess()
         {
             try
             {                
