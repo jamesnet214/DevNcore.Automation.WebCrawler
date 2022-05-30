@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "TestApp\TestApp.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{7526EE21-545D-4864-8563-8BFF82C195E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingVoice", "CodingVoice\CodingVoice.csproj", "{135F78AE-963E-46D3-B7D2-D76524A7DE57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodingVoice", "CodingVoice\CodingVoice.csproj", "{135F78AE-963E-46D3-B7D2-D76524A7DE57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevNcore.Automation.Speech", "DevNcore.Automation.Speech\DevNcore.Automation.Speech.csproj", "{DB823D55-3898-4CCE-903E-44BB43F90F56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevNcore.Automation.Speech", "DevNcore.Automation.Speech\DevNcore.Automation.Speech.csproj", "{DB823D55-3898-4CCE-903E-44BB43F90F56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevNcore.AutoMation.CefSharp", "DevNcore.AutoMation.CefSharp\DevNcore.AutoMation.CefSharp.csproj", "{559AF791-6665-4837-8267-CD2681DDB1A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{DB823D55-3898-4CCE-903E-44BB43F90F56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB823D55-3898-4CCE-903E-44BB43F90F56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB823D55-3898-4CCE-903E-44BB43F90F56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{559AF791-6665-4837-8267-CD2681DDB1A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{559AF791-6665-4837-8267-CD2681DDB1A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{559AF791-6665-4837-8267-CD2681DDB1A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{559AF791-6665-4837-8267-CD2681DDB1A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
