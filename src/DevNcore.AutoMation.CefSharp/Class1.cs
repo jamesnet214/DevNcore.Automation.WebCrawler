@@ -4,5 +4,6 @@ namespace DevNcore.AutoMation.CefSharp
 {
     public class Class1
     {
+
     }
 }
