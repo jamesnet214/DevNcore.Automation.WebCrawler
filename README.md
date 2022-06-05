@@ -7,9 +7,7 @@
 ## 개발 내역
   - [x] ChromeDriverManager: 크롬 드라이버를 항상 최신버전으로 유지하는 기능
   - [x] ChromeHeler: 윈도우, 클릭, 입력등 자동화 제어
-  - [ ] HtmlParser
-  - [ ] PuppeteerSharp
-  - [ ] CefSharpHeler
+  - [x] HtmlParser
 
 ## NugetPackages 1.0.0
 - [DevNcore.Automation.WebCrawler](#)
