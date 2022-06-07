@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevNcore.AutoMation.CefShar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevNcore.LogViewer", "DevNcore.LogViewer\DevNcore.LogViewer.csproj", "{9F9EF90B-B9B9-4791-B2E1-277723A2F05A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevNcore.Stopwatch", "DevNcore.Stopwatch\DevNcore.Stopwatch.csproj", "{D8A41A51-E872-4202-B963-6B968FCE38BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{9F9EF90B-B9B9-4791-B2E1-277723A2F05A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F9EF90B-B9B9-4791-B2E1-277723A2F05A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F9EF90B-B9B9-4791-B2E1-277723A2F05A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8A41A51-E872-4202-B963-6B968FCE38BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8A41A51-E872-4202-B963-6B968FCE38BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8A41A51-E872-4202-B963-6B968FCE38BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8A41A51-E872-4202-B963-6B968FCE38BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
