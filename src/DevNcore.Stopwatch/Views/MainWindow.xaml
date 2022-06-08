@@ -7,76 +7,6 @@
         mc:Ignorable="d" ResizeMode="NoResize" AllowsTransparency="True" WindowStyle="None"
         Topmost="{Binding TopMost}" Opacity="1"
         Height="130" Width="250">
-    <Window.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Cursor" Value="Hand"/>
-                    <Setter Property="Background" Value="#666666"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <Style TargetType="TextBlock" x:Key="timeStyle">
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontSize" Value="30"/>
-        </Style>
-
-        <Style TargetType="TextBlock" x:Key="labelStyle">
-            <Setter Property="Foreground" Value="DarkGray"/>
-            <Setter Property="FontSize" Value="11"/>
-            <Setter Property="TextAlignment" Value="Right"/>
-            <Setter Property="Padding" Value="0 0 3 0"/>
-        </Style>
-
-
-        <Style x:Key="toggleStyle" TargetType="ToggleButton" BasedOn="{x:Null}">
-            <Setter Property="Margin" Value="0 5"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="ToggleButton">
-                        <Grid x:Name="GD" Background="{TemplateBinding Background}">
-                            <Image Source="/Images/pin.png" Name="pin" Visibility="Collapsed"/>
-                            <Image Source="/Images/unpin.png" Name="unpin"/>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Cursor" Value="Hand"/>
-                                <Setter Property="Background" Value="#666666"/>
-                            </Trigger>
-                            
-                            <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="pin" Property="Visibility" Value="Visible"/>
-                                <Setter TargetName="unpin" Property="Visibility" Value="Collapsed"/>
-                            </Trigger>
-                            <Trigger Property="IsChecked" Value="False">
-                                <Setter TargetName="pin" Property="Visibility" Value="Collapsed"/>
-                                <Setter TargetName="unpin" Property="Visibility" Value="Visible"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-
-    </Window.Resources>
    
     <Border MouseLeftButtonDown="MainWindowDrag" Background="#333333" BorderBrush="Orange" BorderThickness="0.5">
         <Grid>
@@ -93,12 +23,15 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel>
-                    <TextBlock Text="집중력 시간 측정기" VerticalAlignment="Center" Margin="5" Foreground="DarkGray"/>
+                    <TextBlock Text="집중력 측정기" VerticalAlignment="Center" Margin="5" Foreground="DarkGray"/>
                 </StackPanel>
                
                 <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <Button Command="{Binding BtnEvent}" CommandParameter="Setting" ToolTip="설정">
+                        <Image Source="/Images/save.png" Width="17" Height="17"/>
+                    </Button>
                     <ToggleButton IsChecked="{Binding TopMost, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource toggleStyle}" ToolTip="항상위에"/>
-                    <Button Command="{Binding BtnEvent}" CommandParameter="close" ToolTip="프로그램 닫기">
+                    <Button Command="{Binding BtnEvent}" CommandParameter="Close" ToolTip="프로그램 닫기">
                         <Image Source="/Images/close.png" Width="17" Height="17"/>
                     </Button>
                 </StackPanel>
@@ -120,8 +53,6 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-
-                <!--<TextBlock Grid.ColumnSpan="10" Text="{Binding TimeText}" Style="{StaticResource timeStyle}" Margin="5 0"/>-->
                 
                 <TextBlock Grid.Column="0" Text="{Binding Hour}" Style="{StaticResource timeStyle}"/>
                 <TextBlock Grid.Column="1" Text=":"  Style="{StaticResource timeStyle}" Margin="5 0"/>

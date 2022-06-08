@@ -14,6 +14,8 @@
     <None Remove="Images\pause.png" />
     <None Remove="Images\pin.png" />
     <None Remove="Images\restart.png" />
+    <None Remove="Images\save.png" />
+    <None Remove="Images\setting.png" />
     <None Remove="Images\start.png" />
     <None Remove="Images\stop.png" />
     <None Remove="Images\unpin.png" />
@@ -26,6 +28,8 @@
   <ItemGroup>
     <Resource Include="Images\close.png" />
     <Resource Include="Images\pause.png" />
+    <Resource Include="Images\save.png" />
+    <Resource Include="Images\setting.png" />
     <Resource Include="Images\unpin.png" />
     <Resource Include="Images\start.png" />
     <Resource Include="Images\restart.png" />
@@ -38,6 +42,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="LiteDB" Version="5.0.11" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="PropertyChanged.Fody" Version="3.4.1" />
   </ItemGroup>

@@ -1,9 +1,13 @@
 ﻿using DevNcore.Stopwatch.Models;
+using DevNcore.Stopwatch.Views;
+using LiteDB;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,7 +18,6 @@ namespace DevNcore.Stopwatch.ViewModels
     public class MainViewModel : INotifyPropertyChanged
     {
 
-        MainWindow win { get; set; }
         public MainViewModel(MainWindow win)
         {
             this.win = win;
@@ -59,13 +62,14 @@ namespace DevNcore.Stopwatch.ViewModels
         #region Values
         public System.Diagnostics.Stopwatch timer { get; set; } = new System.Diagnostics.Stopwatch();
         public UserConfig cfg { get; set; } = new UserConfig();
+        private MainWindow win { get; set; }
+        private HistoryWindow winHistory{ get; set; }
+
         #endregion
 
 
 
         #region Events
-        
-
         private RelayCommand _BtnEvent;
         public RelayCommand BtnEvent
         {
@@ -86,15 +90,30 @@ namespace DevNcore.Stopwatch.ViewModels
                 case "ResetTimer":
                     ResetTimer();
                     break;
-                case "close":
-                    Close();
-                    
+                case "Close":
+                    Close();                    
+                    break;
+                case "Setting":
+                    Setting();
                     break;
             }
         }
 
+        private void Setting()
+        {
+            if(winHistory == null)
+            {
+                winHistory = new HistoryWindow();
+                winHistory.Owner = win;                
+            }
+
+            winHistory.ShowDialog();
+            winHistory = null;
+        }
+
+
         private void Close()
-        {            
+        {   
             UserConfig.Save(win, cfg);
             win.Close();
         }
@@ -127,9 +146,6 @@ namespace DevNcore.Stopwatch.ViewModels
         }
 
         #endregion
-
-
-
 
 
 

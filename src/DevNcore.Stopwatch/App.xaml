@@ -4,6 +4,124 @@
              xmlns:local="clr-namespace:DevNcore.Stopwatch"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Setter Property="Background" Value="#666666"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="timeStyle">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="30"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="labelStyle">
+            <Setter Property="Foreground" Value="DarkGray"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="TextAlignment" Value="Right"/>
+            <Setter Property="Padding" Value="0 0 3 0"/>
+        </Style>
+
+
+        <Style x:Key="toggleStyle" TargetType="ToggleButton" BasedOn="{x:Null}">
+            <Setter Property="Margin" Value="0 5"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Grid x:Name="GD" Background="{TemplateBinding Background}">
+                            <Image Source="/Images/pin.png" Name="pin"/>
+                            <Image Source="/Images/unpin.png" Name="unpin"  Visibility="Collapsed"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Cursor" Value="Hand"/>
+                                <Setter Property="Background" Value="#666666"/>
+                            </Trigger>
+
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="pin" Property="Visibility" Value="Visible"/>
+                                <Setter TargetName="unpin" Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="pin" Property="Visibility" Value="Collapsed"/>
+                                <Setter TargetName="unpin" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <Style x:Key="DG_HEADER_STYLE" TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="Background" Value="Orange" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Foreground" Value="#252525" />
+            <Setter Property="BorderBrush" Value="DarkGray" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Padding" Value="10 0 10 0"/>
+            <Setter Property="Width" Value="auto"/>
+            <Setter Property="Height" Value="28" />
+        </Style>
+
+        <Style x:Key="DG_CELL_STYLE" TargetType="{x:Type DataGridCell}">
+            <!--<Setter Property="Background" Value="{Binding 순번, Converter={StaticResource BGColorConverter}}"/>-->
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGridCell}">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter />
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#0078D7" />
+                            </Trigger>
+                            <!--활성화 되었을때-->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Black"/>
+                                <Setter Property="Foreground" Value="Aqua" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+
+
+
+
+
+
+
+
+
     </Application.Resources>
 </Application>

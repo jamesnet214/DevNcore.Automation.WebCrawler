@@ -1,0 +1,119 @@
+﻿<Window x:Class="DevNcore.Stopwatch.Views.HistoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DevNcore.Stopwatch.Views"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize" AllowsTransparency="True"
+        WindowStyle="None" Height="450" Width="800">
+    
+    <Border MouseLeftButtonDown="MainWindowDrag" Background="#333333" BorderBrush="Orange" BorderThickness="0.5">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel>
+                    <TextBlock Text="History" VerticalAlignment="Center" Margin="5" Foreground="DarkGray"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal">                    
+                    <Button Command="{Binding BtnEvent}" CommandParameter="Close" ToolTip="프로그램 닫기">
+                        <Image Source="/Images/close.png" Width="17" Height="17"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+
+                <Grid Grid.Row="1" Name="grid">
+                    <DataGrid ItemsSource="{Binding 사이트목록, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CanUserResizeColumns="False" Name="dg사이트"
+                      Width="auto" Height="{Binding ElementName=grid, Path=ActualHeight}"
+                      ColumnHeaderStyle="{StaticResource DG_HEADER_STYLE}" CellStyle="{StaticResource DG_CELL_STYLE}"
+                      CanUserAddRows="False" CanUserSortColumns="False" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True"
+                      ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible"                      
+                      CanUserDeleteRows="False" SelectionMode="Extended"
+                      SelectedItem="{Binding sel사이트, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,0">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="순서" Width="50">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding 순서}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                           Foreground="DarkGray"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="순서" Width="100">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding 이미지URL}" Width="100" Height="30"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="사이트명" Width="auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding 이름}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Yellow"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="연결상태" Width="auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding 연결상태}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="주소" Width="200">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding 주소}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="" Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button Content="이동" Click="클릭이벤트_이동"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+
+                            <!--<DataGridTextColumn Header="연결상태" Binding="{Binding 연결상태, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="auto" 
+                                        ElementStyle="{StaticResource grid_tbk}" EditingElementStyle="{StaticResource grid_tbx}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="주소" Binding="{Binding 주소, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" 
+                                        ElementStyle="{StaticResource grid_tbk}" EditingElementStyle="{StaticResource grid_tbx}"/>-->
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+
+            </Grid>
+            
+            
+            
+            
+        </Grid>
+    </Border>
+</Window>
