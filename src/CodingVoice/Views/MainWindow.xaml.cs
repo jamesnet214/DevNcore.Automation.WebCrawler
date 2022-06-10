@@ -23,17 +23,11 @@ namespace CodingVoice.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        Chrome cm { get; set; }
         public MainWindow()
         {
             InitializeComponent();
             VM vm = new VM(this);
-            DataContext = vm;
-            
+            DataContext = vm;            
         }
-
-       
-
-
     }
 }
